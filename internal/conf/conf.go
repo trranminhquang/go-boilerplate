@@ -3,11 +3,16 @@ package conf
 import (
 	"net/url"
 	"time"
+
+	"github.com/gobwas/glob"
 )
 
 // GlobalConfiguration holds all the configuration that applies to all instances.
 type GlobalConfiguration struct {
 	API APIConfiguration
+
+	SiteURL         string `json:"site_url" split_words:"true" required:"true"`
+	URIAllowListMap map[string]glob.Glob
 }
 
 type APIConfiguration struct {
